@@ -1,0 +1,192 @@
+/* ==============================================
+   Title      : Professional Luxury Product Gallery
+   Description: Refined styles for a high-end,
+                elegant, and modern gallery.
+   ============================================== */
+
+/* ---------- 1. Design Tokens ---------- */
+:root{
+  /* Base Palette: Dark, sophisticated, and minimal */
+  --bg: #0A0A0A;             /* Near-black for a very high-end feel */
+  --text: #E0E0E0;           /* Soft white, easy on the eyes */
+  --muted: #888888;          /* Softer gray for descriptions */
+  --card: #121212;           /* Card background, slightly lighter than bg */
+  --line: #222222;           /* Subtle border color */
+  
+  /* Accent: A single, elegant gold for prices and highlights */
+  --accent: #D4AF37;         /* A classic "gold" tone */
+
+  /* Effects */
+  --radius: 12px;
+  --shadow-card: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.4);
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --fs-hero: clamp(2.2rem, 4vw, 3rem);
+  --fs-h2: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.9rem;
+}
+
+/* ---------- 2. Global Reset / Base ---------- */
+*{ box-sizing: border-box }
+html{ scroll-behavior: smooth }
+body{
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font: 400 var(--fs-body)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- 3. Layout ---------- */
+.container{
+  width: min(1200px, 90%); /* 90% width for better mobile spacing */
+  margin-inline: auto;
+  padding: 0 16px; /* Remove vertical padding, handle with components */
+}
+
+/* ---------- 4. Header & Footer ---------- */
+.site-header {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--fs-small);
+  transition: color 0.3s ease;
+}
+
+/* Make filter links clickable */
+.nav-links a.filter-link {
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+/* Style for the currently active filter link (ADDED) */
+.nav-links a.active {
+  color: var(--text);
+  font-weight: 700; /* Make it bold to show it's active */
+}
+
+.site-footer {
+  padding: 32px 0;
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.site-footer p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+
+/* ---------- 5. Gallery Styles ---------- */
+
+/* Page title */
+.gallery-title {
+  font-size: var(--fs-hero);
+  text-align: center;
+  margin-bottom: 48px;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+/* Gallery grid layout */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px; /* Increased gap for a more "luxury" breathing room */
+}
+
+/* Individual product card styling */
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect: Lifts and highlights the card */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: #333;
+}
+
+/* Product image styling */
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover;
+  /* Use 'contain' if images are getting cut off, but 'cover' looks better */
+  /* object-fit: contain; */ 
+  background-color: #000; /* Black bg for images like the watches */
+}
+
+/* Container for product details */
+.product-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Makes card footers align */
+  border-top: 1px solid var(--line);
+}
+
+/* Product name */
+.product-name {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+/* Product price */
+.product-price {
+  color: var(--accent); /* Using the elegant gold accent */
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+}
+
+/* Product description */
+.product-description {
+  font-size: var(--fs-small);
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1; 
+}

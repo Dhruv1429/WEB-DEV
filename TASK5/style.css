@@ -1,0 +1,194 @@
+/* --- 1. Variables & Reset (The Foundation) --- */
+:root {
+    --primary-color: #0f172a;   /* Deep Navy */
+    --accent-color: #3b82f6;    /* Bright Blue */
+    --text-light: #e2e8f0;      /* Off-white */
+    --text-dark: #334155;       /* Dark Grey */
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    color: var(--text-dark);
+}
+
+/* Reusable Container to keep content centered */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 2. Pro Navigation Bar --- */
+.site-header {
+    background-color: var(--white);
+    box-shadow: var(--shadow); /* Adds depth */
+    position: sticky; /* Stays at top while scrolling */
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px; /* Fixed professional height */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+}
+
+.logo .highlight {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* The "Button" Link Style */
+.btn-nav {
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+    padding: 10px 25px;
+    border-radius: 50px; /* Pill shape */
+    transition: transform 0.2s ease, background-color 0.3s ease !important;
+}
+
+.btn-nav:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* --- 3. Hero Section (Placeholder) --- */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #1e293b);
+    color: var(--white);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+/* --- 4. Pro Footer (Grid Layout) --- */
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding-top: 4rem;
+    margin-top: auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Equal Columns */
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #334155;
+}
+
+.footer-heading {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+address p, .footer-links a {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-style: normal;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links { list-style: none; }
+.footer-links a { text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--accent-color); padding-left: 5px; }
+
+/* Social Buttons Styling */
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-buttons a {
+    text-decoration: none;
+    color: var(--white);
+    background-color: rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.social-buttons a:hover {
+    background-color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* --- 5. Responsiveness (Media Queries) --- */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack footer columns */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-buttons {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxury Accessory Gallery</title>
+  <!-- Link to the new, refined CSS file -->
+  <link rel="stylesheet" href="style2.css" />
+  <!-- Import the "Inter" font for a clean, professional look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 
+    PROFESSIONAL HEADER
+  -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="main-nav">
+        <div class="nav-brand">LUXE</div>
+        <div class="nav-links">
+          <!-- 
+            FILTER LINKS
+            All links now have the 'filter-link' class and a 'data-filter' attribute.
+          -->
+          <a href="#" class="filter-link active" data-filter="all">All</a>
+          <a href="#" class="filter-link" data-filter="watch">Watches</a>
+          <a href="#" class="filter-link" data-filter="bag">Bags</a>
+          <a href="#" class="filter-link" data-filter="jewelry">Jewelry</a>
+          <a href="#">About</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content container -->
+  <main class="container">
+
+    <!-- Page heading -->
+    <h1 class="gallery-title">Accessory Gallery</h1>
+
+    <!-- Product gallery container -->
+    <div class="gallery">
+
+      <!-- Product card 1 -->
+      <div class="product-card" data-category="watch">
+        <img src="jacob&co astronomia.png" alt="Jacob & Co. Astronomia watch with celestial theme" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Jacob & Co. Astronomia</h2>
+          <p class="product-price">$760,000</p>
+          <p class="product-description">A masterpiece of horology featuring a celestial-themed, rotating movement.</p>
+        </div>
+      </div>
+
+      <!-- Product card 2 -->
+      <div class="product-card" data-category="watch">
+        <img src="https://objects-prod.cdn.chopard.com/q_auto,f_auto,dpr_2/e_trim/w_iw,h_ih,c_lpad,g_center/c_pad,ar_1:1,w_1490,e_sharpen:60/ProductsAssets/Web/168566-3007_01.png" alt="Mille Miglia GTS Power Control Grigio Speciale" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Mille Miglia GTS Power Control</h2>
+          <p class="product-price">$1,015</p>
+          <p class="product-description">Crafted to mould the curve of the wrist to perfection.</p>
+        </div>
+      </div>
+
+      <!-- Product card 3 -->
+      <div class="product-card" data-category="watch">
+        <img src="jacob&co-dragon.png" alt="Jacob & Co. Astronomia Dragon watch" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Jacob & Co. Dragon</h2>
+          <p class="product-price">$1,200,000</p>
+          <p class="product-description">Features an intricate, hand-painted dragon sculpture inside the case.</p>
+        </div>
+      </div>
+
+      <!-- Product card 4 -->
+      <div class="product-card" data-category="watch">
+        <img src="jacob&co-solar.png" alt="Jacob & Co. Astronomia Solar Planets watch" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Jacob & Co. Solar Planets</h2>
+          <p class="product-price">$850,000</p>
+          <p class="product-description">A solar system on your wrist, with rotating gemstone planets.</p>
+        </div>
+      </div>
+
+      <!-- Product card 5 -->
+      <div class="product-card" data-category="bag">
+        <img src="gucci.png" alt="Gucci Marmont black leather wallet" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Gucci Marmont Wallet</h2>
+          <p class="product-price">$200</p>
+          <p class="product-description">Iconic matelassé chevron leather with a gold-tone GG logo.</p>
+        </div>
+      </div>
+
+      <!-- Product card 6 (FIXED) -->
+      <div class="product-card" data-category="watch">
+        <!-- Fixed image path from .png to .jpg -->
+        <img src="rolex.png" alt="Rolex Sea-Dweller watch in two-tone gold and steel" class="product-image" />
+        <div class="product-info">
+          <h2 class="product-name">Rolex Sea-Dweller</h2>
+          <!-- Fixed broken </D> tag -->
+          <p class="product-price">$180,400</p>
+          <p class="product-description">A professional-grade dive watch in a two-tone steel and gold finish.</p>
+        </div>
+      </div>
+      
+     <!-- Product card 7 (FIXED & UPDATED) -->
+      <div class="product-card" data-category="jewelry">
+        <!-- Fixed image path from .png to .jpg -->
+        <img src="ruby.png" alt="Loose ruby gemstones" class="product-image" />
+        <div class="product-info">
+          <!-- Added product name -->
+          <h2 class="product-name">Natural Ruby Gemstone</h2>
+          <!-- Fixed broken </D> tag -->
+          <p class="product-price">$340,000</p>
+          <!-- Fixed description -->
+          <p class="product-description">A collection of high-quality natural, unheated ruby gemstones.</p>
+        </div>
+      </div>
+      
+     <!-- Product card 8 (FIXED & UPDATED) -->
+      <div class="product-card" data-category="jewelry">
+        <!-- Fixed image path from .png to .jpg -->
+        <img src="diamond.png" alt="Diamond Cuban chain" class="product-image" />
+        <div class="product-info">
+          <!-- Added product name -->
+          <h2 class="product-name">Diamond Cuban Chain</h2>
+          <!-- Fixed broken </D> tag -->
+          <p class="product-price">$140,000</p>
+          <p class="product-description">Iced-out cuban link chain set with VVS diamonds.</p>
+        </div>
+      </div>
+
+    </div> <!-- End of gallery -->
+  </main> <!-- End of main container -->
+
+  <!-- 
+    PROFESSIONAL FOOTER (FIXED)
+  -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 LUXE.DHRUV.</p>
+    </div>
+  </footer>
+
+  <!-- 
+    FILTERING SCRIPT (MOVED)
+    The JavaScript is now in its own file.
+    'defer' tells the browser to wait until the HTML is parsed.
+  -->
+  <script src="filter.js" defer></script>
+
+</body>
+</html>

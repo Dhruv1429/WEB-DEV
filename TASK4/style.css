@@ -1,0 +1,133 @@
+/* 1. Variables */
+:root {
+  /* Light Mode: bright and colorful */
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple Gradient */
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --btn-bg: #764ba2;
+  --btn-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode: deep and cool */
+  --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); /* Dark Blue Gradient */
+  --card-bg: #1a1a1a;
+  --text-color: #f0f0f0;
+  --nav-bg: rgba(0, 0, 0, 0.8);
+  --btn-bg: #4facfe;
+  --btn-text: #000000;
+}
+
+/* 2. Base Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Looks cleaner */
+  background: var(--bg-gradient); /* The fancy background */
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.logo span {
+  color: var(--btn-bg);
+}
+
+.btn-toggle {
+  padding: 8px 15px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  border-radius: 20px; /* Rounded buttons look friendly */
+  font-weight: 600;
+}
+
+/* 4. Main Card Section */
+.main-content {
+  flex: 1; /* Pushes footer to bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  overflow: hidden; /* Keeps corners round */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Nice shadow */
+  text-align: center;
+  
+  /* The "Student Touch": Animation */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect: lifts the card up */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  padding: 20px;
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-body p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px; /* Pill shape */
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* 5. Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--nav-bg);
+  font-size: 0.9rem;
+}
