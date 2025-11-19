@@ -273,6 +273,21 @@ a {
     border-color: #00d2ff;
 }
 
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Fix image responsiveness globally */
+.hero-image img {
+    /* Change fixed width/height to max-width for flexibility */
+    max-width: 100%; 
+    width: 350px;
+    height: auto; 
+    aspect-ratio: 1/1; /* Keeps it square */
+}
 /* --- FOOTER --- */
 footer {
     text-align: center;
@@ -305,23 +320,46 @@ footer {
 }
 
 /* --- RESPONSIVE --- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
     .navbar {
         padding: 20px;
+        position: sticky;
     }
     
+    .menu-toggle {
+        display: block; /* Show hamburger icon on mobile */
+    }
+
     .nav-links {
-        display: none; /* Simple hide for mobile to save space */
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust based on navbar height */
+        right: -100%; /* Hidden off-screen by default */
+        width: 100%;
+        background-color: rgba(15, 15, 15, 0.98);
+        text-align: center;
+        padding: 20px 0;
+        transition: 0.3s ease-in-out;
+        border-bottom: 1px solid #333;
     }
-    
+
+    /* Class added by JS to show menu */
+    .nav-links.active {
+        right: 0; 
+    }
+
     .hero-section {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-top: 40px;
+        padding-top: 100px; /* More space for fixed header */
+        gap: 30px;
     }
 
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap; /* Allows buttons to stack if screen is very narrow */
     }
 
     .hero-text {
@@ -330,10 +368,24 @@ footer {
 
     .hero-image {
         order: 1;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Reduce image size slightly for phones */
+    .hero-image img {
+        width: 250px; 
+        height: 250px;
     }
     
     .gradient-text {
         font-size: 2.5rem;
+    }
+
+    /* Prevent horizontal scrolling issues */
+    body {
+        overflow-x: hidden;
     }
 }
