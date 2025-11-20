@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,6 +19,12 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        
+        <i class="fas fa-sun" id="theme-icon"></i>
+        
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
     <header id="home" class="hero-section">
@@ -79,11 +84,11 @@
             </div>
         </div>
     </section>
-<section id="projects" class="section-padding bg-darker">
+
+    <section id="projects" class="section-padding bg-darker">
         <h2 class="section-title">MY TASKS</h2>
         
         <div class="projects-grid">
-            
             <div class="project-card hover-effect">    
                 <h3>Task 1: Portfolio</h3>  
                 <p>My personal portfolio website.</p>
@@ -111,74 +116,57 @@
             <div class="project-card hover-effect">    
                 <h3>Task 5</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK5/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 6</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 7</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 8</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 9</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 10</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 11</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
             <div class="project-card hover-effect">    
                 <h3>Task 12</h3>
                 <p>Project in progress...</p>
                 <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
             </div>
-
+            
             <div class="project-card hover-effect">    
-                <h3>TRAVEL BLOG
-                </h3>
-                <p></p>
+                <h3>TRAVEL BLOG</h3>
+                <p>My travel adventures.</p>
                 <a target="_blank" href="TRAVEL-BLOG/index.html" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>INSEM-PROJECT</h3>
-                <p></p>
+                <p>University project.</p>
                 <a target="_blank" href="insem-project/index.html" class="btn primary-btn">View Project</a>
             </div>
 
         </div>
     </section>
-     <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-    </script>
-
 
     <footer id="contact">
         <p>Let's Connect</p>
@@ -188,6 +176,8 @@
         </div>
         <p class="copyright">&copy; 2025 Dhruv Singh.</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
