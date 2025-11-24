@@ -189,11 +189,54 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.card .icon { font-size: 2.5rem; margin-bottom: 20px; }
+/* Icon class updated to use Font Awesome */
+.card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent); /* Applied accent color to icons */
+}
 .card h3 { margin-bottom: 10px; font-size: 1.25rem; }
 .card p { color: var(--text-light); font-size: 0.95rem; }
 
-/* --- 5. Footer --- */
+/* --- 5. Testimonials Section (NEW) --- */
+.testimonials {
+    background-color: var(--white);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for testimonials */
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 5px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.quote-icon {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.quote-text {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.client-name {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+
+/* --- 6. Footer --- */
 .site-footer {
     background: var(--primary);
     color: #94a3b8;
@@ -201,8 +244,9 @@ body {
 }
 
 .footer-grid {
+    /* Adjusted grid to accommodate 4 columns */
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr; 
     gap: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid #334155;
@@ -219,16 +263,35 @@ body {
     letter-spacing: 1px;
 }
 
-address p, .contact-link {
-    font-style: normal;
+/* New: Footer Quick Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    display: block;
     margin-bottom: 8px;
+    transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+
+/* Contact/Address Styling Update */
+address p, address a {
+    font-style: normal;
+    margin-bottom: 12px;
     display: block;
     color: #94a3b8;
     text-decoration: none;
 }
-.contact-link:hover { color: var(--accent); }
+address a:hover { color: var(--accent); }
+address .fas { margin-right: 8px; color: var(--accent); } /* Icon styling */
 
-.social-buttons { display: flex; gap: 10px; }
+
+.social-buttons { display: flex; gap: 10px; margin-top: 20px;}
 .social-buttons a {
     background: rgba(255,255,255,0.05);
     color: white;
@@ -239,6 +302,7 @@ address p, .contact-link {
     transition: 0.3s;
 }
 .social-buttons a:hover { background: var(--accent); }
+.social-buttons a .fab { margin-right: 5px; } /* Icon spacing */
 
 .footer-bottom {
     text-align: center;
@@ -246,7 +310,18 @@ address p, .contact-link {
     font-size: 0.85rem;
 }
 
-/* --- 6. Mobile Responsiveness --- */
+/* --- 7. Mobile Responsiveness --- */
+@media (max-width: 992px) {
+    /* Adjust grid for tablets */
+    .testimonial-grid {
+        grid-template-columns: 1fr; /* Stack testimonials vertically */
+    }
+    .footer-grid {
+        /* Switch to 2 columns on tablet/smaller desktop */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5rem; }
     
@@ -264,9 +339,14 @@ address p, .contact-link {
     .btn-nav { width: 100%; text-align: center; }
     
     .footer-grid {
+        /* Full stack on mobile */
         grid-template-columns: 1fr;
         text-align: center;
     }
     .footer-desc { margin: 0 auto; }
+    address { text-align: center; }
+    address p, address a { display: inline-block; margin-right: 15px;} /* Inline contact info */
     .social-buttons { justify-content: center; }
+    .social-buttons a { margin: 5px; }
+
 }

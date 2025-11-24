@@ -222,7 +222,7 @@ a {
 }
 
 .info-card {
-    background: var(--card-bg);
+    /* background: var(--card-bg); */
     padding: 30px;
     border-radius: 15px;
     border: 1px solid var(--border-color);
