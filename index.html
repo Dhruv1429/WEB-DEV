@@ -8,6 +8,14 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('demo:activeUser')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <title>Portfolio | Dhruv Singh</title>
 </head>
 <body>
 
@@ -18,6 +26,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
+             <li><a href="#" id="logoutLink" style="color: #ff7a7a;">Logout</a></li>
         </ul>
         
         <i class="fas fa-sun" id="theme-icon"></i>
@@ -25,6 +34,9 @@
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
+    
+    </ul>
+    
     </nav>
 
     <header id="home" class="hero-section">
@@ -120,8 +132,8 @@
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 6</h3>
-                <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <p></p>
+                <a href="TASK6/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 7</h3>
@@ -131,27 +143,27 @@
             <div class="project-card hover-effect">    
                 <h3>Task 8</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK8/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 9</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK9/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 10</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK10/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 11</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK11/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             <div class="project-card hover-effect">    
                 <h3>Task 12</h3>
                 <p>Project in progress...</p>
-                <a href="javascript:void(0)" class="btn disabled">Coming Soon</a>
+                <a href="TASK12/index.html" target="_blank" class="btn primary-btn">View Project</a>
             </div>
             
             <div class="project-card hover-effect">    
@@ -163,6 +175,11 @@
                 <h3>INSEM-PROJECT</h3>
                 <p>University project.</p>
                 <a target="_blank" href="insem-project/index.html" class="btn primary-btn">View Project</a>
+            </div>
+            <div class="project-card hover-effect">    
+                <h3>LOGIN PAGE</h3>
+                <p>Portfolio Login page</p>
+                <a target="_blank" href="login.html" class="btn primary-btn">View Project</a>
             </div>
 
         </div>
@@ -178,6 +195,13 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    document.getElementById('logoutLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        sessionStorage.removeItem('demo:activeUser'); // Clear session
+        window.location.href = 'login.html'; // Go back to login
+    });
+</script>
 
 </body>
 </html>

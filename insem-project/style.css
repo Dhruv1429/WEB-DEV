@@ -1,92 +1,37 @@
-/* --- FONT CHANGES --- */
 body {
-  font-family: 'Lato', Arial, sans-serif; /* NEW: Professional font */
-  margin: 0;
-  padding: 0;
-  background: #f5f3f3;
-  color: #333; /* NEW: Darker, more readable text */
+  font-family: Arial, sans-serif;
+   margin: 20;
+  padding: 10;
+  background: rgb(197, 222, 244)
 }
 
-/* NEW: Using Montserrat for all headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
-
-/* --- COLOR & HEADER CHANGES --- */
-header {
-  background: #222222; /* NEW: Softer charcoal, not pure black */
-  color: #ffffff;
-  padding: 1.5em;
+header, footer {
+  background: #070707;
+  color: rgb(212, 10, 10);
+  padding: 1em;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* NEW: Subtle shadow */
-}
-
-header h1 {
-  margin: 0 0 0.5em 0;
-  font-size: 2em;
-  color: #ffffff; /* NEW: Changed from blue to white for a cleaner look */
-  font-weight: 600;
 }
 
 nav a {
-  color: #ffffff;
+  color: beige;
   margin: 0 1em;
   text-decoration: none;
-  font-weight: 700; /* Bolder nav links */
-  font-family: 'Montserrat', sans-serif;
-  transition: color 0.3s ease; /* NEW: Smooth color fade */
-}
-
-nav a:hover {
-  color: #007bff; /* NEW: Brand color on hover */
-  text-decoration: none; /* Removed underline */
-}
-
-/* --- CONTAINER & CARD STYLES --- */
-.container {
-  max-width: 960px;
-  margin: 2em auto;
-  padding: 2.5em; /* NEW: Increased padding */
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* NEW: Softer shadow */
-}
-
-.login-container {
-  max-width: 450px;
-  margin: 2em auto;
-  padding: 2.5em; /* NEW: Increased padding */
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* NEW: Softer shadow */
 }
 
 main {
-  /* Removed padding, as it's now on .container */
+  padding: 2em;
 }
 
-/* --- FORM & BUTTON IMPROVEMENTS --- */
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.2em; /* NEW: Increased gap */
+  gap: 1em;
+  max-width: 400px;
 }
 
-input,
-textarea,
-select,
-button {
-  padding: 0.9em; /* NEW: Standardized padding */
+input, textarea, select, button {
+  padding: 0.5em;
   font-size: 1em;
-  font-family: 'Lato', sans-serif; /* NEW: Consistent font */
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 100px;
 }
 
 button {
@@ -94,114 +39,14 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  font-weight: 700; /* NEW: Bolder button text */
-  font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease; /* NEW: Better transition */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* NEW: Button shadow */
 }
 
 button:hover {
   background: #0056b3;
-  transform: translateY(-2px); /* NEW: "Lift" effect on hover */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* NEW: Stronger shadow on hover */
 }
-
-/* --- FOOTER CHANGES --- */
-footer {
-  background: #222222; /* NEW: Matching charcoal color */
-  color: #aaaaaa;
-  padding: 2em; /* NEW: More padding */
-  text-align: center;
-  margin-top: 3em; /* NEW: More space */
-}
-
-/* --- LIST STYLES --- */
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  background: #f9f9f9;
-  border: 1px solid #eee;
-  padding: 1.2em; /* NEW: More padding */
-  margin-bottom: 0.5em;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-article {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-article:last-child {
-  border-bottom: none;
-}
-
-/* --- HOMEPAGE HERO STYLES --- */
-.homepage-hero {
-  text-align: center;
-  padding: 2em 1em;
-}
-
-.homepage-hero h2 {
-  font-size: 2.5em; /* NEW: Even bigger */
-  margin-bottom: 0.5em;
-  color: #333;
-}
-
-.homepage-hero p {
-  font-size: 1.15em; /* NEW: Slightly larger */
-  color: #555;
-  max-width: 800px;
-  margin: 0 auto 1.5em auto;
-  line-height: 1.6; /* NEW: More readable line spacing */
-}
-
-/* --- CALL TO ACTION (CTA) BUTTONS --- */
-.cta-container {
-  margin-top: 2em;
-}
-
-.cta-button {
-  padding: 0.9em 1.8em; /* NEW: Bigger buttons */
-  font-size: 1.1em;
-  font-weight: 700;
-  font-family: 'Montserrat', sans-serif; /* NEW: Consistent font */
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 0 0.5em;
-  display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* NEW: Button shadow */
-}
-
-.cta-primary {
-  background: #007bff;
-  color: #ffffff;
-  border: 2px solid #007bff;
-}
-
-.cta-primary:hover {
-  background: #0056b3;
-  border-color: #0056b3;
-  transform: translateY(-2px); /* NEW: "Lift" effect */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.cta-secondary {
-  background: #ffffff;
-  color: #333;
-  border: 2px solid #ccc;
-}
-
-.cta-secondary:hover {
-  background: #f8f8f8;
-  border-color: #aaa;
-  transform: translateY(-2px); /* NEW: "Lift" effect */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+.foot{
+  margin-top: 300px;
+  height: 50px;
+  padding: 0px;
+  padding-top: 7px;
 }

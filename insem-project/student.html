@@ -3,41 +3,383 @@
 <head>
   <meta charset="UTF-8" />
   <title>Student Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --surface: #0b1120;
+      --surface-alt: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148,163,184,0.3);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(15,23,42,0.65);
+      --transition-fast: 180ms ease-out;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.3), transparent 55%),
+        #020617;
+    }
+
+    /* Layout */
+    header {
+      padding: 1.4rem 2.4rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.85));
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h2 {
+      font-size: 1.4rem;
+    }
+
+    .user-pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 1.8rem auto 2.4rem;
+      padding: 0 1.4rem;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Summary row */
+    .summary-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .summary-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .summary-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .summary-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .summary-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    section h3 {
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+
+    .filter-input {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.9);
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      margin-bottom: 0.3rem;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+        background-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .filter-input::placeholder {
+      color: rgba(148,163,184,0.7);
+    }
+
+    .filter-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.6);
+      transform: translateY(-1px);
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .course-item {
+      border-radius: var(--radius-md);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.45);
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .course-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(15,23,42,0.8);
+      border-color: rgba(56,189,248,0.6);
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(15,23,42,0.98));
+    }
+
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .course-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .course-tag {
+      font-size: 0.72rem;
+      padding: 0.17rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--muted);
+    }
+
+    .course-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.1rem;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background-color var(--transition-fast), color var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      box-shadow: 0 10px 26px rgba(56,189,248,0.38);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(56,189,248,0.48);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.8);
+      color: var(--text);
+      border: 1px solid rgba(148,163,184,0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(15,23,42,0.85);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>STUDENT DASHBOARD</h1> <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="course.html">Courses</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="student.html">Student</a>
-      <a href="assignment.html">Assignment</a>
-    </nav>
+    <h2>Student Dashboard</h2>
+    <div class="user-pill">
+      Logged in as <strong>Student</strong> · Today
+    </div>
   </header>
 
-  <main class="container"> <section>
-      <h3>Available Courses</h3>
+  <main>
+    <!-- Summary cards -->
+    <div class="summary-row">
+      <div class="summary-card">
+        <span class="summary-label">Enrolled</span>
+        <span class="summary-value">1 / 2</span>
+        <span class="summary-meta">You can enroll in more courses</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Assignments</span>
+        <span class="summary-value">1 active</span>
+        <span class="summary-meta">Due this week</span>
+      </div>
+    </div>
+
+    <!-- Available Courses -->
+    <section>
+      <h3>
+        Available Courses
+        <span class="section-pill">Browse & enroll</span>
+      </h3>
+
+      <input
+        class="filter-input"
+        type="search"
+        placeholder="Search courses (eg: A, B)..."
+        aria-label="Search available courses"
+      />
+
       <ul>
-        <li>Course A <button>Enroll</button></li>
-        <li>Course B <button>Enroll</button></li>
+        <li class="course-item">
+          <div class="course-header">
+            <span class="course-title">Course A · Web Fundamentals</span>
+            <span class="course-tag">Beginner</span>
+          </div>
+          <div class="course-meta">
+            <span>Duration: 4 weeks</span>
+            <span>Next batch: Today</span>
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary">
+              <span class="pill-dot"></span>
+              Enroll
+            </button>
+            <button class="btn-ghost">View syllabus</button>
+          </div>
+        </li>
+
+        <li class="course-item">
+          <div class="course-header">
+            <span class="course-title">Course B · Data Structures</span>
+            <span class="course-tag">Intermediate</span>
+          </div>
+          <div class="course-meta">
+            <span>Duration: 6 weeks</span>
+            <span>Next batch: In 3 days</span>
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary">
+              <span class="pill-dot"></span>
+              Enroll
+            </button>
+            <button class="btn-ghost">View syllabus</button>
+          </div>
+        </li>
       </ul>
     </section>
-    
-    <hr style="margin: 2em 0;"> <section>
-      <h3>My Courses</h3>
+
+    <!-- My Courses -->
+    <section>
+      <h3>
+        My Courses
+        <span class="section-pill">1 active</span>
+      </h3>
+
       <ul>
-        <li>
-          Course A <button>View Content</button>
-          <button>Submit Assignment</button>
+        <li class="course-item">
+          <div class="course-header">
+            <span class="course-title">Course A · Web Fundamentals</span>
+            <span class="course-tag">Progress: 40%</span>
+          </div>
+          <div class="course-meta">
+            <span>Next lesson: CSS Layout</span>
+            <span>Assignment due: Tomorrow</span>
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary">View content</button>
+            <button class="btn-ghost">Submit assignment</button>
+          </div>
         </li>
       </ul>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2025 BRIGHT FUTURE PLATFORM</p>
-  </footer>
 </body>
 </html>

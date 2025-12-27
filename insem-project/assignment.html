@@ -3,30 +3,469 @@
 <head>
   <meta charset="UTF-8" />
   <title>Submit Assignment</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #020617;
+      --surface: #020617;
+      --surface-alt: #0b1120;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.2);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148,163,184,0.35);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 22px 50px rgba(15,23,42,0.8);
+      --transition-fast: 180ms ease-out;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.28), transparent 55%),
+        #020617;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2.8rem auto;
+      padding: 0 1.5rem 2.4rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.92));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 1.8rem 1.6rem 1.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* Info row */
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 540px) {
+      .info-row {
+        flex-direction: column;
+      }
+    }
+
+    .pill {
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.9);
+      font-size: 0.75rem;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    /* Custom file area */
+    .file-area {
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.96);
+      padding: 1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast),
+        box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .file-area:hover {
+      border-color: rgba(56,189,248,0.9);
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(15,23,42,1));
+      box-shadow: 0 14px 35px rgba(15,23,42,0.9);
+      transform: translateY(-1px);
+    }
+
+    .file-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .file-text {
+      font-size: 0.86rem;
+    }
+
+    .file-text span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .file-btn {
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(56,189,248,0.4);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .file-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 13px 30px rgba(56,189,248,0.5);
+    }
+
+    .file-info {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .file-info strong {
+      color: var(--text);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Progress bar */
+    .progress-wrapper {
+      margin-top: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      transition: width 200ms ease-out;
+    }
+
+    .progress-value {
+      min-width: 3rem;
+      text-align: right;
+      color: var(--text);
+    }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background-color var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      box-shadow: 0 12px 28px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(56,189,248,0.5);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.95);
+      color: var(--text);
+      border: 1px solid rgba(148,163,184,0.65);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(15,23,42,0.85);
+    }
+
+    .status-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      min-height: 1.1rem;
+    }
+
+    .status-text.success {
+      color: #bbf7d0;
+    }
+
+    .status-text.error {
+      color: #fecaca;
+    }
+
+    /* Preview area */
+    .preview-title {
+      margin-top: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    #filePreview {
+      margin-top: 0.4rem;
+      padding: 0.75rem;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.5);
+      max-height: 220px;
+      overflow: auto;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>SUBMIT ASSIGNMENT</h1> <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="course.html">Courses</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="student.html">Student</a>
-      <a href="assignment.html">Assignment</a>
-    </nav>
-  </header>
+  <main>
+    <h2>Submit Assignment for Course A</h2>
+    <p class="subtitle">Upload your assignment file and click submit. You will see a progress bar, success message, and a preview for text files.</p>
 
-  <main class="container"> <h2>Submit Assignment for Course A</h2>
-    <form>
-      <label>Upload File:</label>
-      <input type="file" />
-      <button type="submit">Submit</button>
-    </form>
+    <section class="card">
+      <div class="info-row">
+        <span>Assignment: <strong>Project 1 · Portfolio Page</strong></span>
+        <span>Due date: <strong>Today, 11:59 PM</strong></span>
+      </div>
+
+      <div class="info-row">
+        <span class="pill">Allowed types: PDF, DOCX, ZIP, TXT</span>
+        <span class="pill">Max size: 10 MB</span>
+      </div>
+
+      <form id="assignmentForm">
+        <label for="fileInput">Upload File</label>
+
+        <div class="file-area" id="fileArea">
+          <div class="file-top">
+            <div class="file-text">
+              <strong id="fileLabel">Click to choose your file</strong><br />
+              <span id="fileHint">No file selected yet</span>
+            </div>
+            <button type="button" class="file-btn">Browse</button>
+          </div>
+          <div class="file-info">
+            <span id="fileName">Filename: —</span>
+            <span id="fileSize">Size: —</span>
+          </div>
+        </div>
+
+        <input id="fileInput" type="file" />
+
+        <div class="progress-wrapper">
+          <span>Upload progress</span>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <span class="progress-value" id="progressValue">0%</span>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="clearBtn">Clear</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <p id="statusText" class="status-text"></p>
+      </form>
+
+      <h3 class="preview-title">File preview (text files)</h3>
+      <pre id="filePreview"></pre>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 BRIGHT FUTURE PLATFORM</p>
-  </footer>
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const fileArea = document.getElementById("fileArea");
+    const fileNameEl = document.getElementById("fileName");
+    const fileSizeEl = document.getElementById("fileSize");
+    const fileHintEl = document.getElementById("fileHint");
+    const fileLabelEl = document.getElementById("fileLabel");
+
+    const progressBar = document.getElementById("progressBar");
+    const progressValue = document.getElementById("progressValue");
+    const statusText = document.getElementById("statusText");
+    const clearBtn = document.getElementById("clearBtn");
+    const form = document.getElementById("assignmentForm");
+
+    const filePreview = document.getElementById("filePreview");
+
+    const MAX_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB
+
+    function formatBytes(bytes) {
+      if (!bytes && bytes !== 0) return "—";
+      if (bytes < 1024) return bytes + " B";
+      const kb = bytes / 1024;
+      if (kb < 1024) return kb.toFixed(1) + " KB";
+      const mb = kb / 1024;
+      return mb.toFixed(1) + " MB";
+    }
+
+    function resetState() {
+      fileInput.value = "";
+      fileNameEl.textContent = "Filename: —";
+      fileSizeEl.textContent = "Size: —";
+      fileHintEl.textContent = "No file selected yet";
+      fileLabelEl.textContent = "Click to choose your file";
+      progressBar.style.width = "0%";
+      progressValue.textContent = "0%";
+      statusText.textContent = "";
+      statusText.className = "status-text";
+      filePreview.textContent = "";
+    }
+
+    fileArea.addEventListener("click", () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (!file) {
+        resetState();
+        return;
+      }
+
+      fileNameEl.textContent = "Filename: " + file.name;
+      fileSizeEl.textContent = "Size: " + formatBytes(file.size);
+      fileHintEl.textContent = "Ready to upload this file.";
+      fileLabelEl.textContent = "File selected";
+
+      statusText.textContent = "";
+      statusText.className = "status-text";
+      filePreview.textContent = "";
+
+      if (file.size > MAX_SIZE_BYTES) {
+        statusText.textContent = "File is too large. Please choose a file under 10 MB.";
+        statusText.classList.add("error");
+        return;
+      }
+
+      // Preview only for text-like files
+      if (file.type.startsWith("text/") || file.name.endsWith(".txt")) {
+        const reader = new FileReader(); // [web:124][web:127][web:134]
+        reader.onload = function (evt) {
+          filePreview.textContent = evt.target.result;
+        };
+        reader.onerror = function () {
+          filePreview.textContent = "Error reading file preview.";
+        };
+        reader.readAsText(file);
+      } else {
+        filePreview.textContent = "Preview not available for this file type.";
+      }
+    });
+
+    clearBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      resetState();
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const file = fileInput.files[0];
+
+      statusText.textContent = "";
+      statusText.className = "status-text";
+
+      if (!file) {
+        statusText.textContent = "Please select a file before submitting.";
+        statusText.classList.add("error");
+        return;
+      }
+
+      if (file.size > MAX_SIZE_BYTES) {
+        statusText.textContent = "File is too large. Please choose a file under 10 MB.";
+        statusText.classList.add("error");
+        return;
+      }
+
+      let progress = 0;
+      progressBar.style.width = "0%";
+      progressValue.textContent = "0%";
+      statusText.textContent = "Uploading...";
+      statusText.className = "status-text";
+
+      const interval = setInterval(() => {
+        progress += Math.random() * 18 + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          statusText.textContent = "Assignment submitted successfully.";
+          statusText.classList.add("success");
+        }
+        progressBar.style.width = progress + "%";
+        progressValue.textContent = Math.round(progress) + "%";
+      }, 180);
+    });
+  </script>
 </body>
 </html>
