@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Dhruv Singh</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page">
+  
+  <div class="center-wrap">
+    <div class="card login-card">
+      <div style="text-align:center; margin-bottom:20px;">
+        <h2 class="h4">Welcome Back</h2>
+        <p class="muted">Please sign in to access the portfolio.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div id="formMsg" class="banner d-none req" style="margin-bottom:15px; background:#ffebeb; border-color:#ffcaca;">
+          Invalid Username or Password
+        </div>
+
+        <label class="label" for="username">Username <span class="req">*</span></label>
+        <input type="text" id="username" placeholder="Enter username" autocomplete="username">
+        <span id="uErr" class="err"></span>
+
+        <label class="label" for="password">Password <span class="req">*</span></label>
+        <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+        <span id="pErr" class="err"></span>
+
+        <div class="row" style="margin-top:10px; margin-bottom:20px;">
+          <label class="checkbox">
+            <input type="checkbox" id="remember"> Remember me
+          </label>
+        </div>
+
+        <button type="submit" class="btn primary" style="width:100%; font-weight:600;">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer container">
+    &copy; 2025 Dhruv Singh. All rights reserved.
+  </footer>
+
+  <script src="login.js"></script>
+</body>
+</html>

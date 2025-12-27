@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="glass-container">
+            <header>
+                <div class="title-section">
+                    <h1>TaskMaster</h1>
+                    <p class="subtitle">Manage your day efficiently</p>
+                </div>
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">🌙</button>
+            </header>
+
+            <div id="error-box" class="error-hidden"></div>
+
+            <div class="input-group">
+                <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off">
+                <button id="add-btn" class="primary-btn">
+                    <span>+</span>
+                </button>
+            </div>
+
+            <div class="actions">
+                <button id="fetch-btn" class="text-btn">⬇ Load Sample Data</button>
+                <span id="task-count">0 Tasks</span>
+            </div>
+
+            <ul id="task-list">
+                </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

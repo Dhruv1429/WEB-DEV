@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern OOP E-Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1>🛍️ ModernStore</h1>
+            <button id="theme-toggle" class="btn-theme">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="products-section">
+            <h2 class="section-title">Featured Products</h2>
+            <div id="product-list" class="grid"></div>
+        </main>
+
+        <aside class="cart-sidebar">
+            <div class="cart-container">
+                <h2>Your Cart</h2>
+                <div id="cart-items" class="cart-list scrollable">
+                    </div>
+                <div class="cart-footer">
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span class="total-price">$<span id="total-price">0.00</span></span>
+                    </div>
+                    <button id="clear-cart" class="btn-danger btn-full">Clear Cart</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

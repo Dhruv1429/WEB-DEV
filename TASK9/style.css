@@ -1,0 +1,116 @@
+:root {
+    --primary: #0984e3;
+    --bg: #dfe6e9;
+    --card-bg: #ffffff;
+    --gap-size: 20px;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    /* CSS Function: Calculate height relative to viewport */
+    height: 120px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    /* CSS Function: Ensure min-height takes up rest of screen minus header */
+    min-height: calc(100vh - 120px - 60px); 
+}
+
+.grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-size); /* 20px */
+    justify-content: flex-start;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    
+    /* CSS FUNCTION CALC() IN ACTION:
+       We want 3 columns. 
+       Logic: (100% of width / 3) - (Gap Adjustment).
+       We subtract roughly the gap size to prevent wrapping.
+    */
+    width: calc(33.333% - (var(--gap-size) * 2 / 3));
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.price {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    display: block;
+}
+
+/* Status Messages */
+.status-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.loading { background-color: #fff3cd; color: #856404; }
+.error { background-color: #f8d7da; color: #721c24; }
+.hidden { display: none; }
+
+#refresh-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 12px 24px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Responsive: Switch to 2 columns on tablets */
+@media (max-width: 768px) {
+    .card {
+        /* (100% / 2) - half the gap */
+        width: calc(50% - (var(--gap-size) / 2));
+    }
+}
+
+/* Responsive: Switch to 1 column on mobile */
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* No calc needed for full width */
+    }
+}

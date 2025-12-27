@@ -1,0 +1,198 @@
+/* --- Variables & Reset --- */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-main: #2d3436;
+    --text-secondary: #636e72;
+    --input-bg: #f1f2f6;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --danger: #ff6b6b;
+    --success: #1dd1a1;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --primary-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --bg-color: #1a1a1a;
+    --card-bg: #2d3436;
+    --text-main: #dfe6e9;
+    --text-secondary: #b2bec3;
+    --input-bg: #353b48;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease;
+}
+
+/* --- Layout --- */
+.wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+h1 { font-weight: 600; color: var(--text-main); letter-spacing: -0.5px; }
+.subtitle { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.icon-btn:hover { transform: rotate(15deg) scale(1.1); }
+
+/* --- Inputs --- */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+input {
+    flex-grow: 1;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: inherit;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus {
+    background: var(--card-bg);
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
+}
+
+.primary-btn {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+}
+
+.primary-btn:active { transform: scale(0.95); }
+
+/* --- Actions & Stats --- */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: #764ba2;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+body.dark-mode .text-btn { color: #a29bfe; }
+
+.text-btn:hover { text-decoration: underline; }
+
+/* --- Task List --- */
+ul { list-style: none; }
+
+li {
+    background: var(--input-bg);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
+    animation: slideIn 0.3s ease-out forwards;
+    transition: transform 0.2s;
+}
+
+li:hover { transform: translateX(5px); }
+
+/* Custom Delete Button */
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.delete-btn:hover { opacity: 1; color: var(--danger); }
+
+/* --- Error Box --- */
+#error-box {
+    background-color: var(--danger);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: none;
+    animation: shake 0.4s ease-in-out;
+}
+#error-box.visible { display: block; }
+
+/* --- Animations --- */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

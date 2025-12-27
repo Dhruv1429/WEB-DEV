@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="card">
+        <div class="search-layout">
+            <input type="text" id="city-input" placeholder="Enter city (e.g., Gurugram)">
+            <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="weather-display hidden" id="weather-box">
+            <div class="icon-container">
+                <i id="weather-icon" class="fa-solid fa-cloud-sun"></i>
+            </div>
+            <h1 id="temp">28°C</h1>
+            <h2 id="city">Gurugram</h2>
+            
+            <div class="details">
+                <div class="col">
+                    <i class="fa-solid fa-water"></i>
+                    <div class="info">
+                        <p id="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <i class="fa-solid fa-wind"></i>
+                    <div class="info">
+                        <p id="wind">12 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-msg hidden" id="error-msg">
+            <p>City not found in database!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
